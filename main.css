@@ -1,0 +1,345 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+.header {
+    width: 1600px;
+    height: 69px;
+    margin: 41px 160px;
+}
+
+.nav_header {
+    width: 100%;
+    height: 69px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px;
+}
+
+.nav_left {
+    font-size: 32px;
+}
+
+.nav_center {
+    font-size: 16px;
+    display: flex;
+    gap: 42.73px;
+}
+
+.nav_right {
+    color: white;
+    font-size: 20px;
+    background-color: black;
+    height: 69px;
+    width: 199px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.text1 {
+    width: 396px;
+    height: 111px;
+    margin: 191px 245px;
+}
+
+.text_img {
+    font-size: 122px;
+    margin-left: 280px;
+    position: relative;
+    bottom: 70px;
+}
+
+.img1 {
+    width: 435px;
+    height: 435px;
+    background-image: url("hero1.png");
+    margin-left: 540px;
+    position: relative;
+    bottom: 640px;
+}
+
+.p1 {
+    font-size: 122px;
+    color: white;
+    padding-top: 280px;
+}
+
+.text2 {
+    width: 124px;
+    height: 16px;
+    font-size: 14px;
+    position: relative;
+    left: 1100px;
+    bottom: 1080px;
+}
+
+.text3 {
+    position: relative;
+    left: 1100px;
+    bottom: 1060px;
+    height: 84px;
+    width: 438px;
+    font-size: 30px;
+}
+
+.text4 {
+    height: 52px;
+    width: 161px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    padding: 0 40px;
+    position: relative;
+    left: 1100px;
+    bottom: 1060px;
+}
+
+.img2 {
+    width: 375px;
+    height: 375px;
+    background-image: url("hero2.png");
+    position: relative;
+    left: 1100px;
+    bottom: 1020px;
+}
+
+.img3 {
+    width: 453px;
+    height: 637px;
+    position: relative;
+    left: 251px;
+    bottom: 850px;
+    background-image: url("hero3.png");
+}
+
+.text5 {
+    font-size: 24px;
+    position: relative;
+    left: 820px;
+    bottom: 1450px;
+}
+
+.text6 {
+    font-size: 90px;
+    position: relative;
+    left: 800px;
+    bottom: 1440px;
+}
+
+.text7 {
+    font-size: 28px;
+    position: relative;
+    left: 820px;
+    bottom: 1430px;
+}
+
+.text8 {
+    font-size: 20px;
+    position: relative;
+    left: 820px;
+    bottom: 1410px;
+    height: 69.56px;
+    width: 215.38px;
+    color: white;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.text9 {
+    font-size: 80px;
+    position: relative;
+    bottom: 1050px;
+    left: 251px;
+}
+
+.apex_text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 586px;
+    height: 102px;
+    position: relative;
+    bottom: 1040px;
+    left: 220px;
+    padding: 40px;
+}
+
+.text10 {
+    font-size: 18px;
+}
+
+.text11 {
+    font-size: 80px;
+}
+
+.apex_text2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 606px;
+    height: 102px;
+    position: relative;
+    bottom: 1030px;
+    left: 215px;
+    padding: 40px;
+}
+
+.img4 {
+    width: 733px;
+    height: 425px;
+    background-image: url("hero4.png");
+    position: relative;
+    bottom: 1450px;
+    left: 900px;
+}
+
+.img5 {
+    height: 274px;
+    width: 461px;
+    background-image: url("hero5.png");
+    position: relative;
+    left: 261px;
+    bottom: 1300px;
+}
+
+.img6 {
+    height: 284px;
+    width: 424px;
+    background-image: url("hero6.png");
+    position: relative;
+    left: 451px;
+    bottom: 1350px;
+}
+
+.text12 {
+    font-size: 80px;
+    position: relative;
+    left: 950px;
+    bottom: 1870px;
+}
+
+.text13 {
+    font-size: 18px;
+    position: relative;
+    left: 960px;
+    bottom: 1840px;
+}
+
+.text14 {
+    font-size: 18px;
+    position: relative;
+    left: 960px;
+    bottom: 1800px;
+}
+
+.text15 {
+    font-size: 80px;
+    position: relative;
+    bottom: 1500px;
+    left: 500px;
+}
+
+.text16 {
+    font-size: 24px;
+    position: relative;
+    bottom: 1400px;
+    left: 261px;
+}
+
+.text17 {
+    font-size: 50px;
+    position: relative;
+    bottom: 1300px;
+    left: 261px;
+}
+
+.text18 {
+    font-size: 18px;
+    position: relative;
+    bottom: 1250px;
+    left: 261px;
+}
+
+.apex_text3 {
+    position: relative;
+    bottom: 1200px;
+    left: 241px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 73px;
+    width: 394px;
+    padding: 20px;
+}
+
+.text19 {
+    font-size: 35px;
+}
+
+.text20 {
+    font-size: 18px;
+}
+
+.apex_text4 {
+    width: 235px;
+    height: 88px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 65px;
+    border: 1px solid black;
+    position: relative;
+    bottom: 1150px;
+    left: 261px;
+}
+
+.img7 {
+    background-image: url("hero7.png");
+    height: 811px;
+    width: 457px;
+    position: relative;
+    bottom: 1800px;
+    left: 750px;
+}
+
+.text22 {
+    font-size: 24px;
+    position: relative;
+    bottom: 2580px;
+    left: 1300px;
+}
+
+.text23 {
+    font-size: 24px;
+    position: relative;
+    bottom: 2460px;
+    left: 1300px;
+}
+
+.text24 {
+    font-size: 24px;
+    position: relative;
+    bottom: 2400px;
+    left: 1300px;
+}
+
+.text25 {
+    font-size: 24px;
+    position: relative;
+    bottom: 2330px;
+    left: 1300px;
+}
