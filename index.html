@@ -1,177 +1,406 @@
 <!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="main.css">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PLanto</title>
+    <title>Игра Алиас</title>
+    <style>
+        /* Основные настройки */
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #FAFAFA;
+            color: #333;
+        }
+
+        #game-container {
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            padding: 20px;
+            background-color: #FFF;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        input[type="number"],
+        button {
+            width: calc(100% - 40px);
+            padding: 12px 20px;
+            margin: 10px 0;
+            border-radius: 50px;
+            border: 2px solid #007BFF;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="number"]:focus,
+        button:focus {
+            outline: none;
+            border-color: #0056b3;
+            box-shadow: 0 0 8px rgba(0, 123, 255, .5);
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #FFFFFF;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+            transition: transform 0.5s;
+            transform: scale(0);
+            border-radius: 50%;
+        }
+
+        button:hover:after {
+            transform: scale(3.5);
+        }
+        /* Игровые элементы */
+
+        #timer-display,
+        #word-display {
+            margin: 20px 0;
+            font-size: 24px;
+            font-weight: bold;
+            transition: transform 0.5s ease;
+        }
+
+        #word-display {
+            font-size: 36px;
+            color: #007BFF;
+        }
+        /* Счет */
+
+        #scoreboard div {
+            background-color: #007BFF;
+            color: #FFFFFF;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        /* Адаптивный дизайн */
+
+        @media (max-width: 768px) {
+            input[type="number"],
+            button {
+                padding: 15px;
+                font-size: 18px;
+            }
+        }
+        /* Анимации */
+
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .prepare-active {
+            animation: pulse 2s infinite;
+        }
+        /* Стиль для таймера подготовки */
+        /* Стиль для таймера подготовки */
+
+        #prep-timer {
+            font-size: 72px;
+            /* Увеличиваем размер шрифта */
+            color: #FF0000;
+            /* Красный цвет текста */
+            font-weight: bold;
+            margin: 20px 0;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="header">
-        <nav class="nav_header">
-            <div class="nav_left">
-                InDisign
+    <div id="game-container">
+        <div id="game-setup">
+            <input type="number" id="num-teams" placeholder="Количество команд">
+            <input type="number" id="num-members" placeholder="Число участников в команде">
+            <input type="number" id="time-per-round" placeholder="Время на тайм (сек)">
+            <button id="start-game">Начать игру</button>
+        </div>
+
+        <div id="game-area" style="display:none;">
+            <div id="prep-timer" style="display:none;">3</div>
+
+            <div id="prepare-team" style="display:none;">
+                <button id="prepare-team-button">Приготовиться команде</button>
             </div>
-            <div class="nav_center">
-                <li>Home</li>
-                <li>About</li>
-                <li>Our Gallery</li>
-                <li>Pricing</li>
-                <li>Services</li>
+            <div id="prepare-player" style="display:none;">
+                <button id="prepare-player-button">Приготовиться участнику</button>
             </div>
-            <div class="nav_right">
-                Contact Us
+            <div id="play-area" style="display:none;">
+                <div id="timer-display"></div>
+                <div id="word-display"></div>
+                <button onclick="answer('yes')">Да</button>
+                <button onclick="answer('no')">Нет</button>
             </div>
-        </nav>
-    </header>
-    <div class="text1">
-        Lorem ipsum dolor sit amet, consectetur <br> adipiscing elit, sed do eiusmod tempor <br> incididunt ut labore et
-        dolore
-        magna
-        aliqua.
-    </div>
-    <div class="text_img">
-        <p>
-            Interi <br>
-            Design
-        </p>
-    </div>
-    <div class="img1">
-        <p class="p1">
-            or
-        </p>
-    </div>
-    <div class="text2">
-        Our Recent Work
-    </div>
-    <div class="text3">
-        We Will Make These Unique <br>
-        Tastes of Yours a design reality!
-    </div>
-    <div class="text4">
-        View Project
-    </div>
-    <div class="img2">
+        </div>
 
+        <div id="scoreboard" style="display:none;"></div>
     </div>
-    <div class="img3">
 
-    </div>
-    <div class="text5">
-        WHO WE ARE
-    </div>
-    <div class="text6">
-        Exterior & <br>
-        Interior
-    </div>
-    <div class="text7">
-        Duis aute irure dolor in reprehenderit in voluptate <br>
-        velit esse cillum dolore eu fugiat nulla pariatur.
-    </div>
-    <div class="text8">
-        READ MORE
-    </div>
-    <div class="text9">
-        Interior Design <br>
-        Program.
-    </div>
-    <div class="apex_text">
-        <div class="text10">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>
-            sed do eiusmod tempor incididunt ut labore et
-            dolore <br>magna
-            aliqua.
-        </div>
-        <div class="text11">
-            /01
-        </div>
-    </div>
-    <div class="apex_text2">
-        <div class="text11">
-            /02
-        </div>
-        <div class="text10">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>
-            sed do eiusmod tempor incididunt ut labore et
-            dolore <br>magna
-            aliqua.
-        </div>
-    </div>
-    <div class="img4">
+    <script>
+        let words = [
 
-    </div>
-    <div class="img5">
+            ]
+            // Исходный список слов
+        let unusedWords = [...words]; // Слова, доступные для игры
+        let temporaryNoWords = []; // Временный массив для слов, отклоненных кнопкой "Нет"
+        let teams = []; // Данные команд
+        let currentTeamIndex = 0; // Индекс текущей команды
+        let currentPlayerIndex = 0; // Индекс текущего игрока в команде
+        let timePerRound; // Время на раунд в секундах
+        let timerInterval; // Для управления таймером
 
-    </div>
-    <div class="img6">
+        document.getElementById('start-game').addEventListener('click', initializeGame);
 
-    </div>
-    <div class="text12">
-        Design Unique And <br>
-        Functional Spaces
-    </div>
-    <div class="text13">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br>
-        eiusmod tempor incididunt ut labore et dolore
-        magna
-        aliqua.
-    </div>
-    <div class="text14">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br>
-        eiusmod tempor incididunt ut labore et dolore
-        magna
-        aliqua.
-    </div>
-    <div class="text15">
-        Our Mentorship Program
-    </div>
-    <div class="text16">
-        CAREER COURSE
-    </div>
-    <div class="text17">
-        Certified Interior <br>
-        Decorator
-    </div>
-    <div class="text18">
-        Lorem ipsum dolor sit amet, consectetur <br>
-        adipiscing elit, sed do eiusmod tempor <br>
-        incididunt ut labore et dolore magna
-        aliqua.
-    </div>
-    <div class="apex_text3">
-        <div class="text19">
-            Rs. 25,000/-
-        </div>
-        <div class="text20">
-            Introduction Price!
-        </div>
-    </div>
-    <div class="apex_text4">
-        <div class="text21">
-            BOOK NOW
-        </div>
-    </div>
-    <div class="img7">
 
-    </div>
-    <div class="text22">
-        CERTIFICATION <br> <br>
-        Certified Interior Decorator
-    </div>
-    <div class="text23">
-        COURSE PACE <br> <br>
-        Study at flexible Pace
-    </div>
-    <div class="text24">
-        DURATION <br> <br>
-        4 Month
-    </div>
-    <div class="text25">
-        COURSE FORM <br> <br>
-        100% Online
-    </div>
+        function initializeGame() {
+            const numTeams = parseInt(document.getElementById('num-teams').value, 10);
+            const numMembers = parseInt(document.getElementById('num-members').value, 10);
+            timePerRound = parseInt(document.getElementById('time-per-round').value, 10);
+
+            teams = Array.from({
+                length: numTeams
+            }, () => ({
+                players: Array.from({
+                    length: numMembers
+                }, () => ({
+                    score: 0
+                }))
+            }));
+
+            currentTeamIndex = 0;
+            currentPlayerIndex = 0;
+            unusedWords = [...words];
+            shuffleArray(unusedWords); // Перемешивание слов в начале игры
+
+            switchToGameArea();
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function switchToGameArea() {
+            document.getElementById('game-setup').style.display = 'none';
+            document.getElementById('game-area').style.display = 'block';
+            showPrepareNextTeam();
+        }
+
+        function showPrepareNextTeam() {
+            document.getElementById('prepare-team').style.display = 'block';
+            document.getElementById('prepare-team-button').textContent = `Приготовиться команде ${currentTeamIndex + 1}`;
+            document.getElementById('prepare-team-button').onclick = () => {
+                // Скрытие кнопки приготовления команды и показ кнопки приготовления первого игрока
+                document.getElementById('prepare-team').style.display = 'none';
+                showPrepareNextPlayer();
+            };
+        }
+
+        function showPrepareNextPlayer() {
+            document.getElementById('prepare-player').style.display = 'block';
+            let buttonText = currentPlayerIndex === 0 ?
+                `Первый участник команды ${currentTeamIndex + 1}, приготовьтесь` :
+                `Приготовиться участнику ${currentPlayerIndex + 1} команды ${currentTeamIndex + 1}`;
+            document.getElementById('prepare-player-button').textContent = buttonText;
+            document.getElementById('prepare-player-button').onclick = startRoundForCurrentPlayer;
+        }
+
+        function showPreparationTimer(callback) {
+            let prepTime = 3; // Время подготовки в секундах
+            const prepTimer = document.getElementById('prep-timer'); // Получаем новый элемент таймера подготовки
+            prepTimer.textContent = prepTime; // Показываем начальное время на таймере
+            prepTimer.style.display = 'block'; // Делаем таймер видимым
+
+            let prepInterval = setInterval(() => {
+                prepTime -= 1;
+                prepTimer.textContent = prepTime;
+
+                if (prepTime <= 0) {
+                    clearInterval(prepInterval);
+                    prepTimer.style.display = 'none'; // Скрываем таймер подготовки после окончания отсчета
+                    callback(); // Вызываем callback-функцию для продолжения игры
+                }
+            }, 1000);
+        }
+
+
+
+
+        function startRoundForCurrentPlayer() {
+            document.getElementById('prepare-player').style.display = 'none';
+
+            // Запуск таймера подготовки перед началом раунда
+            showPreparationTimer(() => {
+                document.getElementById('play-area').style.display = 'block';
+
+                if (timerInterval) {
+                    clearInterval(timerInterval); // Остановка предыдущего таймера, если он был
+                }
+
+                let timeRemaining = timePerRound;
+                updateTimerDisplay(timeRemaining); // Первоначальное обновление таймера перед его стартом
+                document.getElementById('timer-display').style.display = 'block'; // Убедимся, что таймер раунда виден
+
+                timerInterval = setInterval(() => {
+                    timeRemaining -= 1;
+                    updateTimerDisplay(timeRemaining);
+
+                    if (timeRemaining <= 0) {
+                        clearInterval(timerInterval); // Очистка таймера, когда время вышло
+                        timerInterval = null;
+                        finishRoundForCurrentPlayer(); // Переход к следующему игроку или выводу результатов
+                    }
+                }, 1000);
+
+                showNextWord(); // Показ первого слова для текущего игрока
+            });
+        }
+
+
+
+        function updateTimerDisplay(time) {
+            const timerDisplay = document.getElementById('timer-display');
+            timerDisplay.textContent = `${time}`;
+
+            // Изменение цвета от зеленого к красному
+            const greenToRedRatio = time <= 5 ? 1 : (timePerRound - time) / (timePerRound - 5);
+            const red = Math.min(255, Math.floor(255 * greenToRedRatio));
+            const green = Math.max(0, 255 - Math.floor(255 * greenToRedRatio));
+            timerDisplay.style.color = `rgb(${red}, ${green}, 0)`;
+
+            // Увеличение размера текста на последних 10 секундах
+            if (time <= 15) {
+                const scaleFactor = 1 + (15 - time) * 0.15; // Увеличиваем на 5% каждую секунду
+                timerDisplay.style.transform = `scale(${scaleFactor})`;
+            } else {
+                timerDisplay.style.transform = 'scale(1)'; // Возвращаем обычный размер, если больше 10 секунд
+            }
+        }
+
+        function showNextWord() {
+            if (unusedWords.length === 0 && temporaryNoWords.length === 0) {
+                // Если и основной, и временный массивы слов пусты, перезагружаем основной из исходного списка
+                unusedWords = [...words];
+                shuffleArray(unusedWords); // Перемешиваем слова для нового раунда
+            } else if (unusedWords.length === 0) {
+                // Если основной массив пуст, но в временном есть слова, переносим их обратно и перемешиваем
+                unusedWords = [...temporaryNoWords];
+                temporaryNoWords = []; // Очищаем временный массив
+                shuffleArray(unusedWords);
+            }
+
+            const wordIndex = Math.floor(Math.random() * unusedWords.length);
+            const word = unusedWords.splice(wordIndex, 1)[0];
+            document.getElementById('word-display').textContent = word;
+
+            window.answer = (response) => {
+                if (response === 'yes') {
+                    teams[currentTeamIndex].players[currentPlayerIndex].score += 1;
+                } else {
+                    temporaryNoWords.push(word); // Возвращаем слово в массив, если ответ "нет"
+                }
+
+                // Показываем следующее слово, только если таймер не остановлен
+                if (timerInterval) {
+                    showNextWord();
+                }
+            };
+        }
+
+
+        function finishRoundForCurrentPlayer() {
+            // Добавим сюда возможность начать новую игру
+            document.getElementById('play-area').style.display = 'none';
+            currentPlayerIndex += 1;
+
+            if (currentPlayerIndex >= teams[currentTeamIndex].players.length) {
+                currentPlayerIndex = 0;
+                currentTeamIndex += 1;
+
+                if (currentTeamIndex >= teams.length) {
+                    displayResults();
+                    return;
+                }
+                showPrepareNextTeam();
+            } else {
+                showPrepareNextPlayer();
+            }
+        }
+
+        function displayResults() {
+            // Кнопка для новой игры
+            document.getElementById('game-area').style.display = 'none';
+            const scoreboard = document.getElementById('scoreboard');
+            scoreboard.innerHTML = '';
+            scoreboard.style.display = 'block';
+
+            teams.forEach((team, index) => {
+                const teamScore = team.players.reduce((acc, player) => acc + player.score, 0);
+                const teamDiv = document.createElement('div');
+                teamDiv.textContent = `Команда ${index + 1}: ${teamScore} очков`;
+                scoreboard.appendChild(teamDiv);
+            });
+
+            const restartButton = document.createElement('button');
+            restartButton.textContent = 'Начать новую игру';
+            restartButton.onclick = resetGame;
+            scoreboard.appendChild(restartButton);
+        }
+
+        function resetGame() {
+            document.getElementById('game-setup').style.display = 'block';
+            document.getElementById('scoreboard').style.display = 'none';
+            document.getElementById('num-teams').value = '';
+            document.getElementById('num-members').value = '';
+            document.getElementById('time-per-round').value = '';
+        }
+
+
+        // Начало игры
+        document.getElementById('start-game').addEventListener('click', initializeGame);
+    </script>
 </body>
 
 </html>

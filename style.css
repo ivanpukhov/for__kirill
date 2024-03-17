@@ -1,179 +1,150 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&display=swap');
-* {
-    padding: 0;
+/* Основные настройки */
+
+body,
+html {
     margin: 0;
-    border: 0;
-    box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
-}
-
-*,
-*:before,
-*:after {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-:focus,
-:active {
-    outline: none;
-}
-
-a:focus,
-a:active {
-    outline: none;
-}
-
-nav,
-footer,
-header,
-aside {
-    display: block;
-}
-
-html,
-body {
-    height: 100%;
-    width: 100%;
-    font-size: 100%;
-    line-height: 1;
-    font-size: 14px;
-    -ms-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
-
-input,
-button,
-textarea {
-    font-family: inherit;
-}
-
-input::-ms-clear {
-    display: none;
-}
-
-button {
-    cursor: pointer;
-}
-
-button::-moz-focus-inner {
     padding: 0;
-    border: 0;
-}
-
-a,
-a:visited {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-ul li {
-    list-style-type: none;
-}
-
-img {
-    vertical-align: top;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-size: inherit;
-    font-weight: 400;
-}
-
-li {
-    list-style: none;
-}
-
-.container {
-    padding: 0 64px;
-}
-
-.first {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.header {
     width: 100%;
-    padding: 41px auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header__logo {
-    font-size: 32px;
-    font-family: 'Abhaya Libre';
-    font-weight: 700;
-}
-
-.header__nav {
-    display: flex;
-    gap: 42px;
-    font-size: 22px;
-}
-
-.header__btn {
-    width: 169px;
-    height: 69px;
-    background-color: #000;
-    color: white;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #FAFAFA;
+    color: #333;
 }
 
-.main {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+#game-container {
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    padding: 20px;
+    background-color: #FFF;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
-.main__left {
+input[type="number"],
+button {
+    width: calc(100% - 40px);
+    padding: 12px 20px;
+    margin: 10px 0;
+    border-radius: 50px;
+    border: 2px solid #007BFF;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input[type="number"]:focus,
+button:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 8px rgba(0, 123, 255, .5);
+}
+
+button {
+    background-color: #007BFF;
+    color: #FFFFFF;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
     position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.main__text {
-    font-size: 19px;
-    font-weight: 500;
-    line-height: 36.94px;
-    width: 396px;
-    margin-top: 101px;
+button:hover {
+    background-color: #0056b3;
 }
 
-.main__title {
-    font-family: 'Abhaya Libre';
-    font-size: 132px;
-    font-weight: 700;
-    margin-top: 116px;
-    z-index: 2;
-}
-
-.main__img {
-    width: 30vw;
-    height: 30vw;
+button:after {
+    content: "";
     position: absolute;
     top: 0;
-    right: 400px;
-    left: 30vw;
-    z-index: -1;
-}
-
-.main__img img {
+    left: 0;
     width: 100%;
     height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    z-index: -1;
+    transition: transform 0.5s;
+    transform: scale(0);
+    border-radius: 50%;
+}
+
+button:hover:after {
+    transform: scale(3.5);
+}
+
+
+/* Игровые элементы */
+
+#timer-display,
+#word-display {
+    margin: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+    transition: transform 0.5s ease;
+}
+
+#word-display {
+    font-size: 36px;
+    color: #007BFF;
+}
+
+
+/* Счет */
+
+#scoreboard div {
+    background-color: #007BFF;
+    color: #FFFFFF;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Адаптивный дизайн */
+
+@media (max-width: 768px) {
+    input[type="number"],
+    button {
+        padding: 15px;
+        font-size: 18px;
+    }
+}
+
+
+/* Анимации */
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.prepare-active {
+    animation: pulse 2s infinite;
+}
+
+
+/* Стиль для таймера подготовки */
+
+
+/* Стиль для таймера подготовки */
+
+#prep-timer {
+    font-size: 72px;
+    /* Увеличиваем размер шрифта */
+    color: #FF0000;
+    /* Красный цвет текста */
+    font-weight: bold;
+    margin: 20px 0;
 }
